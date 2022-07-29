@@ -100,8 +100,10 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            if (row.containsKey(value) || row.containsValue(value)) {
-                jobs.add(row);
+            for (Map.Entry<String, String> item : row.entrySet()) {
+                if (item.getKey().contains(value) || item.getValue().contains(value)) {
+                    jobs.add(row);
+                }
             }
 
         }
