@@ -29,10 +29,12 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        field = field.toLowerCase();
+
         ArrayList<String> values = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
-            String aValue = row.get(field);
+            String aValue = row.get(field).toLowerCase();
 
             if (!values.contains(aValue)) {
                 values.add(aValue);
@@ -70,11 +72,13 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        value = value.toLowerCase();
+
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toLowerCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
@@ -95,13 +99,17 @@ public class JobData {
         // load data, if not already loaded
         loadData();
 
+        value = value.toLowerCase();
+
         // TODO - implement this method
         ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
 
         for (HashMap<String, String> row : allJobs) {
 
             for (Map.Entry<String, String> item : row.entrySet()) {
-                if (item.getKey().contains(value) || item.getValue().contains(value)) {
+                String itemKey = item.getKey().toLowerCase();
+                String itemValue = item.getValue().toLowerCase();
+                if (itemKey.contains(value) || itemValue.contains(value)) {
                     jobs.add(row);
                 }
             }
